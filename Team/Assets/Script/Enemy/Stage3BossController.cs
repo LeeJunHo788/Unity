@@ -21,7 +21,7 @@ public class Stage3BossController : BossController
   //Explosion관련 변수
   public GameObject warningEffectPrefab;
   public GameObject explosionEffectPrefab;
-  public float explosionCooldown = 10f; //10초에 한 번씩 공격
+  public float explosionCooldown = 8f; //8초에 한 번씩 공격
   private float explosionTimer;         //공격 타이머
   float explosionDuration = 2f;         //공격중에 상태유지
   float explosionStateTimer = 0f;
@@ -145,7 +145,7 @@ public class Stage3BossController : BossController
   //Heal애니메이션에서 이벤트함수 호출용
   public void HealComplete()
   {
-    float healAmount = 300f;
+    float healAmount = 100000f;
     currentHp = Mathf.Min(currentHp + healAmount, maxHp);
 
     if(healPoint != null && healEffectPrefab != null)

@@ -12,8 +12,20 @@ public class Locked : MonoBehaviour
     private void Start()
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+    //여기도 널방지코드추가
+    GameObject gmObj = GameObject.Find("GameManager");
+    if (gmObj != null)
+    {
+      gm = gmObj.GetComponent<GameManager>();
+      if (gm == null)
+        Debug.LogWarning("GameManager 컴포넌트가 없음");
     }
+    else
+    {
+      Debug.LogWarning("GameManager 오브젝트를 찾을 수 없습니다");
+    }
+  }
 
     private void Update()
     {

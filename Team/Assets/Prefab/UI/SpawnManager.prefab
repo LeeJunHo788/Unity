@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7600824443387080128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7600824443387080130}
+  - component: {fileID: 7600824443387080129}
+  m_Layer: 6
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7600824443387080130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600824443387080128}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7600824443387080129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600824443387080128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44fef8de00441b74ea83edbef4a62548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicEnemies:
+  - {fileID: 1421846701043101624, guid: 18d8390afcb7b5a4f8674f45b0f2ac22, type: 3}
+  - {fileID: 7148206037244507572, guid: 5d8b4d481aa81924b9f402aefa14be10, type: 3}
+  dashEnemies:
+  - {fileID: 3207749790068906215, guid: 033dd0b6fa5b63f45b316f4277c183d8, type: 3}
+  - {fileID: 232458789338039399, guid: 0bec9ff4322c45c49bf24c953f29a0fc, type: 3}
+  longDistanceEnemies:
+  - {fileID: 2152827705758868338, guid: 4c99a22b9db12f8469f78190e2da2049, type: 3}
+  - {fileID: 1259455912541990235, guid: 1170e200ae747164782c294cfb2ae541, type: 3}
+  eliteMonster:
+  - {fileID: 3732788706024640301, guid: 1ff3a83d0a367ee439a8757cf4ed8bc0, type: 3}
+  - {fileID: 1946091642205024323, guid: e2502c955880fc841b29dd20b3a5e18b, type: 3}
+  - {fileID: 7331028592418423116, guid: fdc7c37e30d7c8b4cb27fabe8c862d32, type: 3}
+  bossPrefab:
+  - {fileID: 8006018199732998773, guid: 6d20a34a2e7ea894cb2a1df3244b0d05, type: 3}
+  - {fileID: 3002721681626593485, guid: e5afe2d610765104fa9f282064c25574, type: 3}
+  - {fileID: 4033048501986796629, guid: 201807fa405e74b49a5e7c70ee769c65, type: 3}
+  eventObjects:
+  - {fileID: 7206539128599550152, guid: b7f394e5b04983d40afe2f1928231c9a, type: 3}
+  - {fileID: 5829130306182134511, guid: 801645504170d5349810cd8da7fbbc82, type: 3}
+  - {fileID: 8936516752945122180, guid: 46afcbb21721d06489704c4648b74ccc, type: 3}
+  - {fileID: 3868066279435788016, guid: 00340ac93c1b2b842ae82e91679e9e59, type: 3}
+  spawnInterval: 0.5
+  waveTime: 60
+  currentWave: 0
+  waveTimer: {fileID: 0}
+  waveNumText: {fileID: 0}
+  waveController: {fileID: 0}
+  magnetObj: {fileID: 480239453138538132, guid: 418346c5f7599b5448c50c9a9b3b33a3, type: 3}
+  magnetSpawnChance: 0.05

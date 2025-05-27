@@ -66,7 +66,7 @@ public class AudioManager : MonoBehaviour
       case "Stage1":
         nextClip = stage1BGM;
         break;
-      case "InfiniteStage":
+      case "Stage2":
         nextClip = infiniteModeBGM;
         break;
       default:

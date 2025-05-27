@@ -19,7 +19,11 @@ public class SFXManager : MonoBehaviour
   public AudioClip catKill; //엘리트보스1 전용
   public AudioClip buttonClicked;
   public AudioClip item; //아이템 휙득시 나는 소리
-  public AudioClip uiApear; //해금창 나올때 
+  public AudioClip uiAppear;
+  public AudioClip gameOver;
+  public AudioClip bossTransition;
+  public AudioClip shopBuy;
+  public AudioClip storm;
 
   private void Awake()
   {

@@ -72,17 +72,52 @@ public class BossController : EnemyController
     rb.simulated = false; //물리 비활성화
     animator.SetTrigger("Dead"); //Dead 애니메이션 재생
 
-    Debug.Log("사망");
-
-    if(waveController != null)
+    if (audioSource != null)
     {
-      //보스 클리어 하면Clear UI뜨게 하기
-      // waveController.ShowGameClearUI();
+      string prefabName = gameObject.name;
+      if (prefabName.Contains("Stage3Boss") || prefabName.Contains("EliteBoss3"))
+      {
+        if (SFXManager.instance.boss3Kill != null)
+        {
+          audioSource.PlayOneShot(SFXManager.instance.boss3Kill);
+        }
+        else
+        {
+          Debug.LogWarning("[효과음 실패] boss3Kill 클립이 null");
+        }
+      }
+      else if (prefabName.Contains("EliteBoss1_Cat"))
+      {
+        if (SFXManager.instance.catKill != null)
+        {
+          audioSource.PlayOneShot(SFXManager.instance.catKill);
+        }
+        else
+        {
+          Debug.LogWarning("[효과음 실패] catKill 클립이 null");
+        }
+      }
+      else
+      {
+        if (SFXManager.instance.enemyKill != null)
+        {
+          audioSource.PlayOneShot(SFXManager.instance.enemyKill); // 기본 적 효과음
+        }
+        else
+        {
+          Debug.LogWarning("[효과음 실패] enemyKill 클립이 null");
+        }
+      }
     }
-     OnDeath?.Invoke();
+    else
+    {
+      Debug.LogWarning("[효과음 실패] audioSource가 null");
+    }
+
+    OnDeath?.Invoke();
   }
   //적 개체 없어지는 이벤트용 함수
-  public override void EnemyDie()
+  public void EnemyDieAnimationEvent()
   {
     DropExp();      // 경험치 오브젝트 드랍
 

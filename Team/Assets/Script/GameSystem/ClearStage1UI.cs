@@ -7,12 +7,26 @@ public class ClearStage1UI : MonoBehaviour
   public GameObject clearUI;  //무한모드 해금 UI
   GameManager gm;
   private AudioSource audioSource; //효과음용 변수 
-  bool hasOpen = false;
+
+  //게임 켜는 동안은 저장하나, 게임 종료되면 리셋되도록
+  private static bool hasOpen = false;
 
   private void Start()
   {
-    gm = GameObject.Find("GameManager").GetComponent<GameManager>(); //게임매니저찾기
-    audioSource = GetComponent<AudioSource>(); //오디오매니저찾기
+    //게임 매니저 널방지 코드 추가
+    GameObject gmObj = GameObject.Find("GameManager");
+
+    if(gmObj != null)
+    {
+      gm = gmObj.GetComponent<GameManager>();
+      if (gm == null)
+        Debug.Log("GameManager컴포넌트가 없음");
+    }
+    else
+    {
+      Debug.Log("게임매니저 오브젝트를 찾을 수 없음");
+    }
+      audioSource = GetComponent<AudioSource>(); //오디오매니저찾기
   }
 
   private void Update()
@@ -22,8 +36,16 @@ public class ClearStage1UI : MonoBehaviour
     if(gm!= null && gm.clearedStage1)
     {
       clearUI.SetActive(true); //스테이지1클리어시 해금UI활성화
-      //audioSource.PlayOneShot(SFXManager.instance.uiApear); //효과음
+      if (audioSource != null && SFXManager.instance != null && SFXManager.instance.buttonClicked != null)
+      {
+        audioSource.PlayOneShot(SFXManager.instance.buttonClicked);
+      }
+      else
+      {
+        Debug.LogWarning("효과음 재생 실패 셋중하나가 null");
+      }
       hasOpen = true;
+      Debug.Log("static으로 져-쟝!");
     }
   }
 

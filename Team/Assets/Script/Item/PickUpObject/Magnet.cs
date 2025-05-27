@@ -7,6 +7,7 @@ public class Magnet : MonoBehaviour
   private Transform playerTransform;
   public GameObject arrowPrefab;
   private GameObject myArrow;
+  private AudioSource audioSource;
 
   void Start()
   {
@@ -19,6 +20,8 @@ public class Magnet : MonoBehaviour
     ArrowIndicator indicator = myArrow.GetComponent<ArrowIndicator>();
     indicator.magnetTarget = this.transform;
 
+    audioSource = GetComponent<AudioSource>();
+
     Destroy(gameObject, 30f);
   }
 
@@ -27,6 +30,9 @@ public class Magnet : MonoBehaviour
     // 플레이어와 접촉했을 때
     if (other.CompareTag("Player"))
     {
+      //효과음재생
+      PlayGetItem();
+
       other.GetComponent<PlayerController>().AttractExp();
       Destroy(gameObject);
     }
@@ -39,6 +45,12 @@ public class Magnet : MonoBehaviour
       Destroy(myArrow);
     }
   }
-
+  private void PlayGetItem()
+  {
+    if (SFXManager.instance != null && SFXManager.instance.item != null)
+    {
+      AudioSource.PlayClipAtPoint(SFXManager.instance.item, transform.position);
+    }
+  }
 
 }

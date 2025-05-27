@@ -23,12 +23,16 @@ public class WeaponController : MonoBehaviour
   PlayerController pc;    // 플레이어 컨트롤러
   GameObject nearEnemy;       // 가장 가까운 적
 
+  private AudioSource audioSource;
+
   void Start()
   {
     player = GameObject.FindWithTag("Player");                          // 플레이어 찾기
     pc = player.GetComponent<PlayerController>();                       // 플레이어 컨트롤러 가져오기
     attackTime = 1 / (pc.attackSpeed * attackSpeed);   // 공격 속도 가져오기
     StartCoroutine(FindEnemyCoroutine());    // 일정 시간 마다 적 감지 실행
+
+    audioSource = GetComponent<AudioSource>();
 
   }
 
@@ -113,6 +117,11 @@ public class WeaponController : MonoBehaviour
       if (nearEnemy == null) break; //타겟이 삭제되었거나 사라졌을 경우 루프 탈출
 
       float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+      if(audioSource != null && SFXManager.instance != null && SFXManager.instance.gun != null)
+      {
+        audioSource.PlayOneShot(SFXManager.instance.gun);
+      }
 
       GameObject bullet = Instantiate(bulletPrefb, transform.position, Quaternion.Euler(0, 0, angle));    // 총알 생성
       bullet.GetComponent<BulletController>().SetDirection(dir);    // 방향 넘겨주기

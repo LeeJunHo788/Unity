@@ -5,7 +5,14 @@ public class CollectableItem : MonoBehaviour
   private CollectItemsEvent eventSystem;
 
   private ArrowIndicator attachedArrow;
-  private bool isSetup = false; 
+  private bool isSetup = false;
+
+  private AudioSource audioSource;
+
+  private void Start()
+  {
+    audioSource = GetComponent<AudioSource>();
+  }
 
   public void Setup(CollectItemsEvent e)
   {
@@ -31,12 +38,22 @@ public class CollectableItem : MonoBehaviour
 
     if (collision.CompareTag("Player"))
     {
+      PlayGetItem(); //효과음재생
+
       eventSystem.OnItemCollected();
 
       if (attachedArrow != null)
         Destroy(attachedArrow.gameObject);
 
       Destroy(gameObject);
+    }
+  }
+
+  private void PlayGetItem()
+  {
+    if (audioSource != null && SFXManager.instance != null && SFXManager.instance.item != null)
+    {
+      audioSource.PlayOneShot(SFXManager.instance.item);
     }
   }
 }

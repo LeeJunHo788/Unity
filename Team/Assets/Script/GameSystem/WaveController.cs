@@ -24,10 +24,13 @@ public class WaveController : MonoBehaviour
 
   private bool isTransitioning = false; //UI트랜지션 중복 실행 방지용
 
+  //효과음용 변수
+  private AudioSource audioSource;
+
   private void Awake()
   {
     isTransitioning = false;
-
+    audioSource = GetComponent<AudioSource>(); //오디오소스 컴포넌트 가져오기
     SetAllPanelsInactive();
   }
   private void SetAllPanelsInactive()
@@ -60,6 +63,13 @@ public class WaveController : MonoBehaviour
     if(gameStartPanel != null)
     {
       gameStartPanel.SetActive(true); //활성화
+
+      //효과음재생
+      if (audioSource != null && SFXManager.instance != null && SFXManager.instance.uiAppear != null)
+      {
+        audioSource.PlayOneShot(SFXManager.instance.uiAppear);
+      }
+
       isTransitioning = true;
 
       Invoke("OnTransitionEnd", 1f);
@@ -74,6 +84,12 @@ public class WaveController : MonoBehaviour
     {
       gameClearPanel.SetActive(true); //활성화
       Debug.Log("활성화");
+
+      //효과음재생
+      if(audioSource != null && SFXManager.instance != null && SFXManager.instance.buttonClicked != null)
+      {
+        audioSource.PlayOneShot(SFXManager.instance.buttonClicked);
+      }
     }
     if(gameClearAnimator != null)
     {
@@ -94,6 +110,13 @@ public class WaveController : MonoBehaviour
     if(gameOverPanel != null)
     {
       gameOverPanel.SetActive(true); //활성화
+
+      //효과음재생
+      if (audioSource != null && SFXManager.instance != null && SFXManager.instance.gameOver != null)
+      {
+        audioSource.PlayOneShot(SFXManager.instance.gameOver);
+      }
+
       gameOverAnimator = gameOverPanel.GetComponent<Animator>();
 
       if (gameOverAnimator != null)
@@ -119,6 +142,12 @@ public class WaveController : MonoBehaviour
     if(warningAnimator != null)
     {
       warningImage.SetActive(true);
+      
+      //경고음 재생
+      if (audioSource != null && SFXManager.instance != null && SFXManager.instance.bossTransition != null)
+      {
+        audioSource.PlayOneShot(SFXManager.instance.bossTransition);
+      }
       warningAnimator.SetTrigger("StartTransition"); //경고애니메이션 먼저 재생
 
       //경고 연출 끝난 후 검정 화면 연출 시작

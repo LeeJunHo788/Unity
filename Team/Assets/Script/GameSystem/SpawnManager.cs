@@ -112,6 +112,8 @@ public class SpawnManager : MonoBehaviour
       isPreparing = true;
       waveStartTime = Time.time;
       currentWave++; // 웨이브 증가
+      AudioManager.instance?.BossBGM(currentWave);//보스전용브금재생위해씬넘버넘겨주기
+
 
       foreach (var ev in EventSystemObject.activeEvents.ToArray())
       {

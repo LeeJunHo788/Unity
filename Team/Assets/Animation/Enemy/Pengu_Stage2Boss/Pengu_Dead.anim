@@ -216,7 +216,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.3333333
+    m_StopTime: 1.3333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -357,8 +357,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.1666666
-    functionName: EnemyDie
+  - time: 1.3333334
+    functionName: EnemyDieAnimationEvent
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: ad18db86d5162ec46934ce72a44e3ff1, type: 3}
     floatParameter: 0

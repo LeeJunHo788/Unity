@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
   public Material hitMat;                 // 피격 마테리얼
 
   //효과음
-  private AudioSource audioSource;
+  protected AudioSource audioSource;
 
   protected virtual void Start()
   {
@@ -135,22 +135,17 @@ public class EnemyController : MonoBehaviour
     //효과음재생
     if (audioSource != null)
     {
-      string prefabName = gameObject.name; // 현재 오브젝트 이름
-      if (prefabName.Contains("EliteBoss1_Cat")) // 프리팹이름이 엘리트보스1이면
+      string prefabName = gameObject.name;
+      if (SFXManager.instance.enemyKill != null)
       {
-        audioSource.PlayOneShot(SFXManager.instance.catKill);
-      }
-      else if (prefabName.Contains("Stage3Boss") || prefabName.Contains("EliteBoss3"))// 엘리트 보스3 이나 최종보스면
-      {
-        audioSource.PlayOneShot(SFXManager.instance.boss3Kill);
+        audioSource.PlayOneShot(SFXManager.instance.enemyKill);
       }
       else
       {
-        if (SFXManager.instance.enemyKill != null)
-          audioSource.PlayOneShot(SFXManager.instance.enemyKill);
+        Debug.LogWarning("[효과음 실패] enemyKill 클립이 null");
       }
+      OnDeath?.Invoke();
     }
-    OnDeath?.Invoke();
   }
 
   public virtual void HitEnemy(float damage)

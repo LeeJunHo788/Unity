@@ -61,6 +61,9 @@ public class PlayerController : MonoBehaviour
   public TextMeshProUGUI goldText;      // 소지금 텍스트
   public TextMeshProUGUI levelText;      // 레벨 텍스트
 
+  //효과음
+  private AudioSource audioSource;
+
 
   private void Awake()
   {
@@ -68,7 +71,7 @@ public class PlayerController : MonoBehaviour
     maxHp = 100f;
     currentHp = maxHp;
     attackDem = 10;
-    defence = 10;
+    defence = 30;
     defIgnore = 0;
     attackSpeed = 1f;
     moveSpeed = 5;
@@ -96,6 +99,7 @@ public class PlayerController : MonoBehaviour
     originMat = GetComponent<SpriteRenderer>().material;
     sp = GetComponent<SpriteRenderer>();
     rb = GetComponent<Rigidbody2D>();
+    audioSource = GetComponent<AudioSource>();
     StatInit();
 
 
@@ -316,6 +320,12 @@ public class PlayerController : MonoBehaviour
     {
       if (hit.CompareTag("Exp"))  // 태그 확인
       {
+        //효과음 재생 먼저
+        if(audioSource != null && SFXManager.instance != null && SFXManager.instance.item != null)
+        {
+          audioSource.PlayOneShot(SFXManager.instance.item);
+        }
+
         ExpPlus(5f * expAcq);     // 경험치 획득
         Destroy(hit.gameObject); // 경험치 오브젝트 제거
       }

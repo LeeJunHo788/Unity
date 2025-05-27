@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f8ac0d78fa26b214ab60b5f0b7752058
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - hitFlashMat: {fileID: 2100000, guid: cc90488713378624bb97ccb2ee0a86ca, type: 2}
+  - hpSlider: {instanceID: 0}
+  - demTextObj: {fileID: 545476964590794775, guid: 6a017887ca7905c46a3f3f23fe089ce7, type: 3}
+  executionOrder: 300
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
