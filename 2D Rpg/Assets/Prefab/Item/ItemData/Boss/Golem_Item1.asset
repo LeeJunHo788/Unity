@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98dee0f912c8fd7428743f1fb17b8b29, type: 3}
+  m_Name: Golem_Item1
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  itemName: "\uACE8\uB818\uC758 \uC815\uC218"
+  info: "\uACF5\uACA9\uB825 +10 \uACF5\uACA9 \uC18D\uB3C4 +15%"
+  maxHpMul: 1
+  maxHpPlus: 0
+  currentHpMul: 1
+  currentHpPlus: 0
+  attMul: 1
+  attPlus: 10
+  defMul: 1
+  defPlus: 0
+  spdMul: 1
+  spdPlus: 0
+  attSpdPlus: 0.15
+  goldAcqPlus: 0
+  itemDropPlus: 0
+  defIgnPlus: 0
+  jumpCountPlus: 0
+  price: 0
+  weight: 5
