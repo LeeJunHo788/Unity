@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
   public GameObject directionObj;
 
   [Header("Ω∫≈»")]
-  public float att = 10;
+  public float att = 10; 
   public float defIg = 0;
 
 
