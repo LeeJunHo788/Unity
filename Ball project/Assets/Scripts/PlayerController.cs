@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     }
   }
 
+  // 공 발사 메서드
   void BallFire()
   {
     if(isReady)
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
       isReady = true;
       directionObj.gameObject.SetActive(true);
 
-      OnPlayerReady?.Invoke();
+      OnPlayerReady?.Invoke();    // 준비 이벤트 호출
     }
   }
 }
