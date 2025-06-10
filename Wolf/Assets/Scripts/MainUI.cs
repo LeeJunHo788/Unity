@@ -41,8 +41,11 @@ public class MainUI : MonoBehaviour
     {
       NameManager.PlayerName = nameInputField.text;
 
-      EnterRoomUI.gameObject.SetActive(true);
-      gameObject.SetActive(false);
+      // EnterRoomUI.gameObject.SetActive(true);
+      // gameObject.SetActive(false);
+
+      var manager = WolfGameRoomManager.singleton;
+      manager.StartClient();
     }
 
     else
