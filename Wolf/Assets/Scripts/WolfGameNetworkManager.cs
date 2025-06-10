@@ -7,10 +7,6 @@ public class WolfGameNetworkManager : NetworkManager
   public override void OnServerAddPlayer(NetworkConnectionToClient conn)
   {
     base.OnServerAddPlayer(conn);
-
-    // 플레이어 이름 임시 지정 (나중에 UI에서 받을 수 있음)
-    LobbyPlayer playerInfo = conn.identity.GetComponent<LobbyPlayer>();
-    playerInfo.SetPlayerName($"Player {numPlayers}");
   }
 
   [ContextMenu("Start Game")]
